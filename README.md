@@ -1177,6 +1177,7 @@ Interactive documentation: `http://localhost:8000/docs`.
 | `RUN_BACKTEST` | `0` | Enable walk-forward evaluation |
 | `DAILY_REFRESH`, `REFRESH_HOUR`, `REFRESH_MINUTE` | `on`, `6`, `0` | Daily pipeline schedule |
 | `PROD_LEAD_DAYS`, `SERVICE_Z` | `84`, `1.65` | Safety-stock inputs |
+| `ERP_TOKEN` | required for live ERP data | ERP API authentication token; configure it outside source control |
 | `CLOUDSQL_DB_USER`, `CLOUDSQL_DB_PASSWORD` | set in `api/.env` | Catalog tier database credentials |
 | `ALLOW_LAN` | `1` | Also listen on the LAN interface |
 | `VITE_API_URL` | derived from the page's host | Dashboard → API URL |
@@ -1199,6 +1200,9 @@ npm run dev
 BigQuery access needs `gcloud auth application-default login`. Use `DATA_SOURCE=csv` to
 run from the local snapshot instead. On a first run with no saved forecasts, the naive
 baseline is served until background training finishes.
+
+For live ERP data, configure `ERP_TOKEN` in the runtime environment or in the
+git-ignored `api/.env` file. Do not commit credentials.
 
 ### 23.5 Deployment
 
